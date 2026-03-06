@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+  books:
+    image: books-micro
+    build: ./Dockerfile.books
+    container_name: books
+    ports:
+      - "8085:5000"
+
+
+  loans:
+    image: loans-micro 
+    build: ./Dockerfile.loans
+    container_name: loans
+    ports:
+      - "8086:5000"
+
+  users:
+    image: users-micro
+    build: ./Dockerfile.users
+    container_name: users
+    ports:
+      - "8087:5000"
+
+
+
+volumes:
+  catalog-data:
+  borrowing-data:
+  user-data:
+
+networks:
+  library-network:
+    driver: bridge
